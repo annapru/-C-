@@ -1,21 +1,31 @@
-/*Сначала вводится количество строк N, затем — сами N строк,
- разделённые символом перевода строки. Все строки состоят лишь
- из латинских букв, цифр и символов подчёркивания.*/
-
+/*Напишите функцию BuildMapValuesSet, принимающую на
+вход словарь map<int, string> и возвращающую множество
+значений этого словаря:*/
 #include<iostream>
 #include<string>
 #include<set>
+#include<map>
 using namespace std;
 
-int main() {
-	int n;
-	cin >> n;
-	string s;
-	set<string> m;
-	for (int i = 0; i < n; i++) {
-		cin >> s;
-		m.insert(s);
-	}
-	cout << m.size();
 
+set<string> BuildMapValuesSet(const map<int, string>& m){
+	set<string> s;
+	for (auto item: m) {
+		s.insert(item.second);
+}
+	return s;
+}
+
+int main() {
+	set<string> values = BuildMapValuesSet({
+	{1, "odd"},
+	{2, "even"},
+	{3, "odd"},
+	{4, "even"},
+	{5, "odd"}
+		});
+
+	for (const string& value : values) {
+		cout << value << endl;
+	}
 }
